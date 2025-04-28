@@ -71,3 +71,11 @@ $(".ubah").click(async function () {
   window.location.replace("ubahtugas.html?docId=" + $(this).attr("data-id"));
 });
 
+  // Update tampilan tombol
+  $(this).attr("data-status", statusBaru);
+  $(this).text(statusBaru);
+  updateWarnaStatus($(this), statusBaru);
+
+  // Tambahkan kode AJAX jika ingin menyimpan perubahan status ke database
+  console.log(`Status tugas ID ${tugasId} diubah menjadi ${statusBaru}`);
+});
