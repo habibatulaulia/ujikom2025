@@ -16,6 +16,86 @@
  
   </head>
   
+ <body>
+   <table class="table" id="daftar-tugas">
+   
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #ffe6f2; /* Warna pink muda */
+    }
+
+    header {
+      background-color: #ff66b2; /* Warna pink tua */
+      padding: 20px;
+      text-align: center;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    h1 {
+      text-align: center;
+      color: #d63384;
+    }
+
+    table {
+      width: 80%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      border: 1px solid #ff66b2;
+      padding: 12px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #ff99cc;
+      color: white;
+      font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+      background-color: #ffe6f2;
+    }
+
+    tr:hover {
+      background-color: #ffb3d9;
+      transition: 0.3s;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    
+  
+  </style>
+     <thead>
+       <tr>
+         <th>tugas</th>
+       </tr>
+       <tr>
+         <th scope="col">#</th>
+         <th scope="col">tugas</th>
+         <th scope="col" id="status">status</th>
+         <th scope="col">prioritas</th>
+         <th scope="col">tanggal</th>
+         <th>aksi</th>
+         <th>aksi</th>
+       </tr>
+     </thead>
+     <tbody>
+     </tbody>
+   </table>
   
     </style>
      <thead>
@@ -35,7 +115,6 @@
      <tbody>
      </tbody>
    </table>
-
 
    <a href="tambah.html" class="tombol">tambah</a>
 
