@@ -41,4 +41,51 @@ export async function ambildaftartugas() {
 
   return hasil;
 }
+export async function ambiltugas(docId) {
+  const docRef = await doc(db, "senin", docId);
+  const docSnap = await getDoc(docRef);
 
+  return await docSnap.data();
+}
+
+function ubahStatus(tombol) {
+  let status = tombol.dataset.status;
+
+  if (status === "Selesai") {
+    tombol.textContent = "Belum Selesai";
+    tombol.dataset.status = "Belum Selesai";
+  } else {
+    tombol.textContent = "Selesai";
+    tombol.dataset.status = "Selesai";
+  }
+}
+
+// Event listener untuk hapus tugas
+$(".tombol-hapus").click(async function () {
+  await hapustugas($(this).attr("data-id"));
+  location.reload();
+});
+
+// Event listener untuk ubah tugas
+$(".ubah").click(async function () {
+  window.location.replace("ubahtugas.html?docId=" + $(this).attr("data-id"));
+});
+
+// Gunakan event delegation agar berfungsi pada elemen dinamis
+$(document).on("click", ".btn-status", function () {
+  let tugasId = $(this).attr("data-id");
+  let statusSekarang = $(this).attr("data-status");
+  let statusBaru;
+
+  if (statusSekarang === "Belum Selesai") {
+    statusBaru = "Sedang Dikerjakan";
+  } else if (statusSekarang === "Sedang Dikerjakan") {
+    statusBaru = "Selesai";
+  } else {
+    statusBaru = "Belum Selesai";
+  }
+
+  // Update tampilan tombol
+  $(this).attr("data-status", statusBaru);
+  $(this).text(statusBaru);
+  updateWarnaStatus($(this), statusBaru);
