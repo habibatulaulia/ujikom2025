@@ -41,6 +41,34 @@ export async function ambildaftartugas() {
 
   return hasil;
 }
+
+export async function tambahtugas(tugas, status, prioritas, tanggal) {
+  try {
+    const dokRef = await addDoc(collection(db, 'senin'), {
+      tugas: tugas,
+      status: status,
+      prioritas: prioritas,
+      tanggal: tanggal,
+    });
+    console.log('berhasil menembah tugas ' + dokRef.id);
+  } catch (e) {
+    console.log('gagal menambah tugas ' + e);
+  }
+}
+
+export async function hapustugas(docId) {
+  await deleteDoc(doc(db, "senin", docId));
+}
+
+export async function ubahtugas(docId, tugas, status, prioritas, tanggal) {
+  await updateDoc(doc(db, "senin", docId), {
+    tugas: tugas,
+    status: status,
+    prioritas: prioritas,
+    tanggal: tanggal,
+  });
+}
+
 export async function ambiltugas(docId) {
   const docRef = await doc(db, "senin", docId);
   const docSnap = await getDoc(docRef);
@@ -71,6 +99,20 @@ $(".ubah").click(async function () {
   window.location.replace("ubahtugas.html?docId=" + $(this).attr("data-id"));
 });
 
+// Gunakan event delegation agar berfungsi pada elemen dinamis
+$(document).on("click", ".btn-status", function () {
+  let tugasId = $(this).attr("data-id");
+  let statusSekarang = $(this).attr("data-status");
+  let statusBaru;
+
+  if (statusSekarang === "Belum Selesai") {
+    statusBaru = "Sedang Dikerjakan";
+  } else if (statusSekarang === "Sedang Dikerjakan") {
+    statusBaru = "Selesai";
+  } else {
+    statusBaru = "Belum Selesai";
+  }
+
   // Update tampilan tombol
   $(this).attr("data-status", statusBaru);
   $(this).text(statusBaru);
@@ -78,6 +120,7 @@ $(".ubah").click(async function () {
 
   // Tambahkan kode AJAX jika ingin menyimpan perubahan status ke database
   console.log(`Status tugas ID ${tugasId} diubah menjadi ${statusBaru}`);
+});
 
 // Fungsi untuk memperbarui warna tombol berdasarkan status
 function updateWarnaStatus(button, status) {
