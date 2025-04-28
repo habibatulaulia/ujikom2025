@@ -70,3 +70,4 @@ $(".tombol-hapus").click(async function () {
 $(".ubah").click(async function () {
   window.location.replace("ubahtugas.html?docId=" + $(this).attr("data-id"));
 });
+
