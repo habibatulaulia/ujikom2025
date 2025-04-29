@@ -1,5 +1,5 @@
 <!DOCTYPE html>
- <html lang="en">
+ <html lang="en" class="h-100">
 
  <head>
    <meta charset="UTF-8">
@@ -15,89 +15,94 @@
    <link rel="stylesheet" href="style.css">    
  
   </head>
-  
- <body>
-   <table class="table" id="daftar-tugas">
-   
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #ffe6f2; /* Warna pink muda */
-    }
-
-    header {
-      background-color: #ff66b2; /* Warna pink tua */
+  <style>body {
+          font-family: 'Segoe UI', sans-serif;
+      background-color: lightpink;
       padding: 20px;
-      text-align: center;
-      color: white;
-      font-size: 24px;
-      font-weight: bold;
+      color: #4d004d;
     }
 
     h1 {
       text-align: center;
-      color: #d63384;
+      color: #cc0066;
+    }
+
+    .input-container {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    input, button {
+      padding: 8px 12px;
+      border: 1px  #cc0066;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    button {
+      background-color: lightpink;
+            margin: 0;
+            padding: 0;
+            color: white;
+            font-family: Arial, sans-serif;
+    }
+
+    button:hover {
+      background-color: #e60073;
     }
 
     table {
-      width: 80%;
-      margin: 20px auto;
+      width: 100%;
       border-collapse: collapse;
-      background-color: white;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
-      overflow: hidden;
+      margin-top: 10px;
+      background-color: lightpink;
     }
 
     th, td {
-      border: 1px solid #ff66b2;
-      padding: 12px;
+      border: 1px solid #cc0066;
+      padding: 10px;
       text-align: center;
     }
 
     th {
-      background-color: #ff99cc;
+      background-color: #cc0066;
       color: white;
-      font-weight: bold;
     }
 
-    tr:nth-child(even) {
-      background-color: #ffe6f2;
+    .done {
+      text-decoration: line-through;
+      color: #666;
+      background-color: #ffe6f0;
     }
 
-    tr:hover {
-      background-color: #ffb3d9;
-      transition: 0.3s;
+    @media (max-width: 600px) {
+      table, thead, tbody, th, td, tr {
+        font-size: 12px;
+      }
     }
-
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-    
-  
   </style>
-     <thead>
-       <tr>
-         <th>tugas</th>
-       </tr>
-       <tr>
-         <th scope="col">#</th>
-         <th scope="col">tugas</th>
-         <th scope="col" id="status">status</th>
-         <th scope="col">prioritas</th>
-         <th scope="col">tanggal</th>
-         <th>aksi</th>
-         <th>aksi</th>
-       </tr>
-     </thead>
-     <tbody>
-     </tbody>
-   </table>
+ <body class="d-flex-colum h-100">
+   
+      <!-- dropdown -->
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      menu
+    </button>
+    
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li><a class="dropdown-item" href="tambah.html">tambah</a></li>
+    </ul>
+  </div>
   
-    </style>
+   <table class="table" id="daftar-tugas">
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li><a class="dropdown-item" href="tambah.html">tambah</a></li>
+    </ul>
+  </div>
+
      <thead>
        <tr>
          <th>tugas</th>
@@ -116,7 +121,6 @@
      </tbody>
    </table>
 
-   <a href="tambah.html" class="tombol">tambah</a>
 
    <script type="module">
      import { ambildaftartugas, hapustugas } from './main.js';
